@@ -1,7 +1,7 @@
 SpreeVersioning
 ===============
 
-Introduction goes here.
+This extension is a thin wrapper around the [PaperTrail](https://github.com/airblade/paper_trail) gem.  It supports auditing and versioning of all spree models out of the box.  The set of models to track can also be easily customized if versioning of only a subset is desired.
 
 Installation
 ------------
@@ -17,6 +17,17 @@ Bundle your dependencies and run the installation generator:
 ```shell
 bundle
 bundle exec rails g spree_versioning:install
+```
+
+Create an initializer file `config/initializers/spree_versioning.rb` with the following code.  SpreeVersioning by default adds versioning to all spree core models that inherit from ActiveRecord::Base.  To customize this set, add models to the arrays passed to the config.include or config.exclude methods as neccessary.
+
+```ruby
+SpreeVersioning.configure do |config|
+	config.include [Spree::ModelA] # Add versioning to ModelA
+	config.exlude  [Spree::ModelB] # Remove versioning from ModelB
+end
+
+SpreeVersioning.track_models
 ```
 
 Testing
