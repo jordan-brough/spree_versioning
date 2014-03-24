@@ -45,7 +45,6 @@ module SpreeVersioning
         Spree::ShippingMethodCategory,
         Spree::ShippingRate,
         Spree::State,
-        Spree::StateChange,
         Spree::StockItem,
         Spree::StockLocation,
         Spree::StockMovement,
