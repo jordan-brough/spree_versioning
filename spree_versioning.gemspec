@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_versioning'
   s.version     = '2.1.2'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Add versioning to your Spree models'
+  s.description = 'This extension is a thin wrapper around the PaperTrail gem. It supports auditing and versioning of all Spree models out of the box. The set of models to track can also be easily customized if versioning of only a subset is desired.'
   s.required_ruby_version = '>= 1.9.3'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Nicholas Hippenmeyer'
+  s.email     = 'nicholashippenmeyer@gmail.com'
+  s.homepage  = 'http://github.com/nhippenmeyer'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
