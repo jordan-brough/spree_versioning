@@ -1,7 +1,7 @@
-require 'paper_trail'
 require 'spree_core'
 require 'spree_versioning/engine'
 require 'spree_versioning/config'
+require 'paper_trail'
 
 module SpreeVersioning
   class << self
