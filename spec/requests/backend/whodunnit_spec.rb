@@ -2,20 +2,19 @@ require 'spec_helper'
 
 describe "whodunnit" do
   let(:user)  { create(:admin_user) }
-  let!(:order) { create(:order_with_line_items) }
 
   before do
     SpreeVersioning.track_models
-    user.generate_spree_api_key!
+    Spree::Admin::BaseController.any_instance.stub(:spree_current_user).and_return(user)
   end
 
   it "records the admin user who makes changes" do
-    pending
     expect do
-      put "/admin/orders/#{order.number}/addresses/#{order.ship_address.id}", token: user.spree_api_key, address: { address1: order.ship_address.address1 + "1" }
-    end.to change { order.ship_address.reload.address1 }
-    response.status.should == 200
+      post("/admin/promotions", {"promotion" => {"name" => "some promo"}})
+    end.to change { Spree::Promotion.count }
 
-    expect(order.ship_address.versions.last.whodunnit).to eq user.id
+    promotion = Spree::Promotion.order('id asc').last
+
+    expect(promotion.versions.last.whodunnit.to_i).to eq user.id
   end
 end
