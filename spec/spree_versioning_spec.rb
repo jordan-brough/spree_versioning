@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SpreeVersioning" do
+describe SpreeVersioning do
   describe "#track_models" do
     before(:each) do
       @config = SpreeVersioning.configuration
@@ -14,8 +14,9 @@ describe "SpreeVersioning" do
     end
 
     it "throws a runtime error if one of the models does not inherit from ActiveRecord::Base" do
-      SpreeVersioning.configure{ |config| config.include [Spree::Ability] }
-      lambda {SpreeVersioning.track_models}.should raise_error
+      SpreeVersioning.configure { |config| config.include [Spree::Ability] }
+      expect { SpreeVersioning.track_models }.to raise_error
     end
   end
 end
+
