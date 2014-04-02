@@ -1,6 +1,7 @@
-require 'spree_core'
+require 'spree'
 require 'spree_versioning/engine'
 require 'spree_versioning/config'
+require 'spree_versioning/auth_helper'
 require 'paper_trail'
 
 module SpreeVersioning
