@@ -5,6 +5,10 @@ if !defined?(ActionController::API)
 end
 
 Spree::Api::BaseController.class_eval do
+  def user_for_paper_trail
+    current_api_user
+  end
+
   # Spree::Api::BaseController does not inherit from ActionController::Base in Spree 2.1 but it does in Spree 2.2.
   # If it doesn't inherit from ActionController::Base then we need to include it ourselves.
   if !(Spree::Api::BaseController < ActionController::Base)
@@ -18,9 +22,5 @@ Spree::Api::BaseController.class_eval do
       before_filter :set_paper_trail_enabled_for_controller
       before_filter :set_paper_trail_whodunnit, :set_paper_trail_controller_info
     end
-  end
-
-  def user_for_paper_trail
-    current_api_user
   end
 end
