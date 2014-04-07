@@ -14,6 +14,7 @@ module SpreeVersioning
     end
 
     def track_models
+      return if ( File.basename($0) == "rake" && ARGV.include?("db:migrate") )
       configuration.models_to_track.each do |model|
         unless model < ActiveRecord::Base
           raise "#{model} does not inherit from ActiveRecord::Base"
