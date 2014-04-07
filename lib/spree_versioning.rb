@@ -21,6 +21,20 @@ module SpreeVersioning
         end
         model.has_paper_trail
       end
+
+      # in certain cases we have to apply papertrail to STI subclasses individually.
+      # all subclasses need to be set up correctly with papertrail or else papertrail will blow up.
+      #
+      # example problem scenario:
+      #   Spree::Promotion::Actions::CreateAdjustment defines its own "has_many :adjustments"
+      #   relationship.   From that point on it doesn't inherit any new associations that are added
+      #   to its base class.  The Papertrail "has_many :versions" relationship is added to the base
+      #   class after that point so we have to specifically add papertrail to CreateAdjustment.
+      configuration.models_to_track.map(&:descendants).flatten.uniq.each do |descendant|
+        if !descendant.reflections.keys.include?(:versions)
+          descendant.has_paper_trail
+        end
+      end
     end
   end
 end

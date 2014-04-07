@@ -17,6 +17,10 @@ describe SpreeVersioning do
       SpreeVersioning.configure { |config| config.include [Spree::Ability] }
       expect { SpreeVersioning.track_models }.to raise_error
     end
+
+    it 'configures problematic STI subclasses correctly' do
+      expect(Spree::Promotion::Actions::CreateAdjustment.reflections).to include(:versions)
+    end
   end
 end
 

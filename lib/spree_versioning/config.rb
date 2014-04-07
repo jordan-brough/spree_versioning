@@ -4,18 +4,15 @@ module SpreeVersioning
     attr_accessor :models_to_track
 
     def initialize
-      @models_to_track =
-      [ Spree::Address,
+      @models_to_track = [
+        Spree::Address,
         Spree::Adjustment,
         Spree::Asset,
-        Spree::BillingIntegration,
         Spree::Calculator,
         Spree::Classification,
         Spree::Configuration,
         Spree::Country,
         Spree::CreditCard,
-        Spree::Gateway,
-        Spree::Image,
         Spree::InventoryUnit,
         Spree::LegacyUser,
         Spree::LineItem,
@@ -39,7 +36,6 @@ module SpreeVersioning
         Spree::ReturnAuthorization,
         Spree::Role,
         Spree::Shipment,
-        Spree::ShippingCalculator,
         Spree::ShippingCategory,
         Spree::ShippingMethod,
         Spree::ShippingMethodCategory,
@@ -57,7 +53,7 @@ module SpreeVersioning
         Spree::Tracker,
         Spree::Variant,
         Spree::Zone,
-        Spree::ZoneMember
+        Spree::ZoneMember,
       ]
     end
 
