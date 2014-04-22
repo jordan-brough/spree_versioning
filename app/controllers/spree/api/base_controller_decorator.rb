@@ -7,6 +7,7 @@ end
 
 Spree::Api::BaseController.class_eval do
   def user_for_paper_trail
+    load_user if current_api_user.nil?
     current_api_user
   end
 end
