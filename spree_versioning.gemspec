@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_versioning'
-  s.version     = '2.1.2'
+  s.version     = '2.2.1'
   s.summary     = 'Add versioning to your Spree models'
   s.description = 'This extension is a thin wrapper around the PaperTrail gem. It supports auditing and versioning of all Spree models out of the box. The set of models to track can also be easily customized if versioning of only a subset is desired.'
   s.required_ruby_version = '>= 1.9.3'
